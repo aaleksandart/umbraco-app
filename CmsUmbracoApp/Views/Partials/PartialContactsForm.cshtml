@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<div class="contacts-form-container container">
+    <div class="inputs-container">
+        <p id="contact-form-header">@Model.Value("contactsFormHeader")</p>
+        <input id="name-input" placeholder="Name" />
+        <input id="email-input" placeholder="Email" />
+        <Textarea id="comments-text" placeholder="Comments"></Textarea>
+        <button id="contact-form-btn">@Model.Value("contactsFormButtonText")</button>
+    </div>
+</div>

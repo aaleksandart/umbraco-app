@@ -1,0 +1,19 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Products>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+@{
+	Layout = "_Layout.cshtml";
+	ViewData["PageTitle"] = @Model.Value("pageTitle");
+	ViewData["PageDescription"] = @Model.Value("pageDescription");
+
+	foreach (var keyword in @Model.PageKeywords)
+	{
+		ViewData["PageKeywords"] += $"{keyword},";
+	}
+}
+
+<partial name="PartialNavbar" />
+
+<partial name="PartialProducts" />

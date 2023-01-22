@@ -1,0 +1,18 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<div class="showcase-container">
+    <div id="showcase-left">
+        <img src="/images/img-showcase-left.svg" alt="">
+    </div>
+    <div id="showcase-center">
+        <div class="showcase-center-content">
+            <h1 id="showcase-header">@Model.Value("showcaseHeader")</h1>
+            <p id="showcase-text">@Model.Value("showcaseText")</p>
+            <button id="showcase-btn"><i class="btn-icons left-btn-corner fa-regular fa-corner"></i><i
+                    class="btn-icons right-btn-corner fa-regular fa-corner"></i><span class="btn-spans">@Model.Value("showcaseButtonText")</span></button>
+        </div>
+    </div>
+    <div id="showcase-right">
+        <img src="/images/img-showcase-right.svg" alt="">
+    </div>
+</div>

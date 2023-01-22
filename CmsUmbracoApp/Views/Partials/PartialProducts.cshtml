@@ -1,0 +1,45 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models.PublishedContent;
+
+
+@{
+	var selection = Umbraco.Content(Guid.Parse("3c9ad583-599a-4571-a483-969db6f55aeb"))
+    .ChildrenOfType("productItemSection")
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate);
+}
+
+
+<div class="products-page container">
+    <h4 id="featured-products">@Model.Value("productsSectionHeader")</h4>
+    <div class="products-container">
+        @foreach (var item in selection)
+        {
+            var productImage = item.Value<IPublishedContent>("productImage");
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="@productImage.Url()" alt="">
+                    <button class="quick-view-btn"><i
+                            class="btn-icons left-products-btn fa-regular fa-corner"></i><i
+                            class="btn-icons right-products-btn fa-regular fa-corner"></i><span class="btn-spans">QUICK
+                            VIEW</span>
+                    </button>
+                </div>
+            <p class="category-text">@item.Value("productCategory")</p>
+                <p class="product-name">@item.Value("productTitle")</p>
+                <div class="star-icons">
+                @for (int i = 0; i < Convert.ToInt32(@item.Value("productRating")); i++)
+                {
+                    <i class="fa-sharp fa-solid fa-star"></i>
+                }
+                @for (int i = 0; i < (5 - Convert.ToInt32(@item.Value("productRating"))); i++)
+                {
+                    <i class="fa-thin fa-star"></i>
+                }
+                </div>
+            <p class="price-text">$@item.Value("productPrice"),00</p>
+            </div>
+        }  
+    </div>
+</div>
